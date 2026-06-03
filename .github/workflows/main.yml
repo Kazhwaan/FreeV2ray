@@ -1,0 +1,29 @@
+name: Auto Send V2Ray Configs
+
+on:
+  schedule:
+    # اجرا در دقیقه 0 و 30 هر ساعت (هر نیم ساعت)
+    - cron: '*/30 * * * *'
+  workflow_dispatch: # برای اینکه بتونی دستی هم اجراش کنی
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Requirements
+        run: pip install requests
+
+      - name: Run Script
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+        run: python main.py
