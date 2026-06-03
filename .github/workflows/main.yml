@@ -2,9 +2,8 @@ name: Auto Send V2Ray Configs
 
 on:
   schedule:
-    # اجرا در دقیقه 0 و 30 هر ساعت (هر نیم ساعت)
     - cron: '*/30 * * * *'
-  workflow_dispatch: # برای اینکه بتونی دستی هم اجراش کنی
+  workflow_dispatch:
 
 jobs:
   build:
